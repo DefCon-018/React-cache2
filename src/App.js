@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
 
-function App() {
+import { useClearCache } from "react-clear-cache";
+
+const App: React.FC<{}> = () => {
+  const { isLatestVersion, emptyCacheStorage } = useClearCache();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div>
+      {!isLatestVersion && (
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              emptyCacheStorage();
+            }}
+          >
+            Update version
+          </a>
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      )}
     </div>
   );
-}
+};
 
 export default App;
