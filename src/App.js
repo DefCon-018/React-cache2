@@ -6,6 +6,7 @@ const App: React.FC<{}> = () => {
   const { isLatestVersion, emptyCacheStorage } = useClearCache();
   return (
     <div>
+      <div>Hello world</div>
       {!isLatestVersion && (
         <p>
           <a
